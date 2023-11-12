@@ -35,7 +35,7 @@ class StartWindow(QMainWindow):
         self.passLabel  =QLabel("Enter your pasword")
 
         self.qe =QLineEdit()
-        self.qe.setPlaceholderText("Enter your pasword")
+        self.qe.setPlaceholderText("Enter your password")
         self.sub_l = QLabel()
         self.btn  =QPushButton("Ok")
 
@@ -49,7 +49,12 @@ class StartWindow(QMainWindow):
         w.setLayout(self.vl)
         self.setCentralWidget(w)
 
-        self.btn.clicked.connect(self.the_btn)
+    def keyPressEvent(self, event):
+            # Check if the pressed key is the Enter key (Key_Return or Key_Enter)
+            if event.key() == 16777220 or event.key() == 16777221:
+                self.the_btn()
+
+            super().keyPressEvent(event)
 
     def the_btn(self):
         if self.qe.text() in self.password:

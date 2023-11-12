@@ -10,6 +10,7 @@ from firstwindow.start import StartWindow
 
 
 
+
 app = QApplication([])
 
 a  = StartWindow()
